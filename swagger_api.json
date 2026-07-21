@@ -1,0 +1,2151 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "School data progress API",
+    "description": "Api for School data progress.",
+    "version": "v1.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.cps.edu/schooldataprogress"
+    }
+  ],
+  "paths": {
+    "/ActStatePerformance/district": {
+      "get": {
+        "tags": [
+          "ActStatePerformance"
+        ],
+        "summary": "(ACTPREACT_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ActStatePerformance/networks": {
+      "get": {
+        "tags": [
+          "ActStatePerformance"
+        ],
+        "summary": "(ACTPREACT_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ActStatePerformance/schools": {
+      "get": {
+        "tags": [
+          "ActStatePerformance"
+        ],
+        "summary": "(ACTPREACT_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoAdvCourses/schools": {
+      "get": {
+        "tags": [
+          "ApsoAdvCourses"
+        ],
+        "summary": "(CIDT_VW_APSO_ACCESS_TO_ADVCOURSES_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoApplyCollegeRates/district": {
+      "get": {
+        "tags": [
+          "ApsoApplyCollegeRates"
+        ],
+        "summary": "(APSO_APPLY_COLLEGE_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoApplyCollegeRates/schools": {
+      "get": {
+        "tags": [
+          "ApsoApplyCollegeRates"
+        ],
+        "summary": "(APSO_APPLY_COLLEGE_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoFinaid/district": {
+      "get": {
+        "tags": [
+          "ApsoFinaid"
+        ],
+        "summary": "(CIDT_APSO_FINAID_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoFinaid/schools": {
+      "get": {
+        "tags": [
+          "ApsoFinaid"
+        ],
+        "summary": "(CIDT_APSO_FINAID_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoFinaid/networks": {
+      "get": {
+        "tags": [
+          "ApsoFinaid"
+        ],
+        "summary": "(CIDT_APSO_FINAID_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoFinaidAppliedRates/district": {
+      "get": {
+        "tags": [
+          "ApsoFinaidAppliedRates"
+        ],
+        "summary": "(CIDT_APSO_FINAID_APPLIED_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoFinaidAppliedRates/schools": {
+      "get": {
+        "tags": [
+          "ApsoFinaidAppliedRates"
+        ],
+        "summary": "(CIDT_APSO_FINAID_APPLIED_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoIlpRates/district": {
+      "get": {
+        "tags": [
+          "ApsoIlpRates"
+        ],
+        "summary": "(CIDT_APSO_ILP_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoIlpRates/schools": {
+      "get": {
+        "tags": [
+          "ApsoIlpRates"
+        ],
+        "summary": "(CIDT_APSO_ILP_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoIlpRates/networks": {
+      "get": {
+        "tags": [
+          "ApsoIlpRates"
+        ],
+        "summary": "(CIDT_APSO_ILP_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoKpi/district": {
+      "get": {
+        "tags": [
+          "ApsoKpi"
+        ],
+        "summary": "(APSO_KPI_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoKpi/schools": {
+      "get": {
+        "tags": [
+          "ApsoKpi"
+        ],
+        "summary": "(APSO_KPI_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoKpi/networks": {
+      "get": {
+        "tags": [
+          "ApsoKpi"
+        ],
+        "summary": "(CIDT_APSO_KPI_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoLpsRates/district": {
+      "get": {
+        "tags": [
+          "ApsoLpsRates"
+        ],
+        "summary": "(CIDT_APSO_LPS_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoLpsRates/schools": {
+      "get": {
+        "tags": [
+          "ApsoLpsRates"
+        ],
+        "summary": "(CIDT_APSO_LPS_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoLpsRates/networks": {
+      "get": {
+        "tags": [
+          "ApsoLpsRates"
+        ],
+        "summary": "(CIDT_APSO_LPS_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ApsoSchoolPractices": {
+      "get": {
+        "tags": [
+          "ApsoSchoolPractices"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ApsoSchoolPractices/SchoolCode/{schoolCode}": {
+      "get": {
+        "tags": [
+          "ApsoSchoolPractices"
+        ],
+        "parameters": [
+          {
+            "name": "schoolCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/BalancedAssessments/schools": {
+      "get": {
+        "tags": [
+          "BalancedAssessments"
+        ],
+        "summary": "(BALANCEDASSESSMENT_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/BehaviorSchoolLevel/schools": {
+      "get": {
+        "tags": [
+          "BehaviorSchoolLevel"
+        ],
+        "summary": "Get behavior data at school level (cps_behavior_school_level)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "schoolyear",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/BehaviorSchoolLevel/schools/{schoolcode}": {
+      "get": {
+        "tags": [
+          "BehaviorSchoolLevel"
+        ],
+        "summary": "Get behavior data for a specific school by school ID",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "schoolyear",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/BlueribonSchoolPublic/schools": {
+      "get": {
+        "tags": [
+          "BlueribonSchoolPublic"
+        ],
+        "summary": "Get Blue Ribbon School data by school code",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "description": "The school code to filter by",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlueribonSchoolPublic"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlueribonSchoolPublic"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlueribonSchoolPublic"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CapitalInvestments/schools": {
+      "get": {
+        "tags": [
+          "CapitalInvestments"
+        ],
+        "summary": "(CapitalInvestments)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Chronicabsence/district": {
+      "get": {
+        "tags": [
+          "Chronicabsence"
+        ],
+        "summary": "(CHRONABS_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Chronicabsence/networks": {
+      "get": {
+        "tags": [
+          "Chronicabsence"
+        ],
+        "summary": "(CHRONABS_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Chronicabsence/schools": {
+      "get": {
+        "tags": [
+          "Chronicabsence"
+        ],
+        "summary": "(CHRONABS_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Cidt5e/schools": {
+      "get": {
+        "tags": [
+          "Cidt5e"
+        ],
+        "summary": "(CIDT_5E_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/CIDT9OT/district": {
+      "get": {
+        "tags": [
+          "CIDT9OT"
+        ],
+        "summary": "(CIDT_9OT_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/CIDT9OT/networks": {
+      "get": {
+        "tags": [
+          "CIDT9OT"
+        ],
+        "summary": "(CIDT_9OT_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/CIDT9OT/schools": {
+      "get": {
+        "tags": [
+          "CIDT9OT"
+        ],
+        "summary": "(CIDT_9OT_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/CidtCreativeBadge/schools": {
+      "get": {
+        "tags": [
+          "CidtCreativeBadge"
+        ],
+        "summary": "(CIDT_CREATIVE_BADGE_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/CidtCultivateImpact/schools": {
+      "get": {
+        "tags": [
+          "CidtCultivateImpact"
+        ],
+        "summary": "(CIDT_CULTIVATE_IMPACT_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/CidtCultivateResponseRate/schools": {
+      "get": {
+        "tags": [
+          "CidtCultivateResponseRate"
+        ],
+        "summary": "(CIDT_CULTIVATE_RESPONSE_RATE_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Collegeenrollment/district": {
+      "get": {
+        "tags": [
+          "Collegeenrollment"
+        ],
+        "summary": "(COLLENR_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Collegeenrollment/networks": {
+      "get": {
+        "tags": [
+          "Collegeenrollment"
+        ],
+        "summary": "(COLLENR_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Collegeenrollment/schools": {
+      "get": {
+        "tags": [
+          "Collegeenrollment"
+        ],
+        "summary": "(COLLENR_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Collegepersistence/district": {
+      "get": {
+        "tags": [
+          "Collegepersistence"
+        ],
+        "summary": "(COLLPER_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Collegepersistence/networks": {
+      "get": {
+        "tags": [
+          "Collegepersistence"
+        ],
+        "summary": "(COLLPER_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Collegepersistence/schools": {
+      "get": {
+        "tags": [
+          "Collegepersistence"
+        ],
+        "summary": "(COLLPER_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DetentionEnrollment/schools": {
+      "get": {
+        "tags": [
+          "DetentionEnrollment"
+        ],
+        "summary": "(CIDT_Transition_Rate_Enrollment)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Detentionpersistence/schools": {
+      "get": {
+        "tags": [
+          "Detentionpersistence"
+        ],
+        "summary": "(CIDT_Transition_Rate_Persistence)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Dropout/district": {
+      "get": {
+        "tags": [
+          "Dropout"
+        ],
+        "summary": "(DROPOUT_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Dropout/networks": {
+      "get": {
+        "tags": [
+          "Dropout"
+        ],
+        "summary": "(DROPOUT_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Dropout/schools": {
+      "get": {
+        "tags": [
+          "Dropout"
+        ],
+        "summary": "(DROPOUT_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Eccc/district": {
+      "get": {
+        "tags": [
+          "Eccc"
+        ],
+        "summary": "(CIDT_ECCC_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Eccc/networks": {
+      "get": {
+        "tags": [
+          "Eccc"
+        ],
+        "summary": "(CIDT_ECCC_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Eccc/schools": {
+      "get": {
+        "tags": [
+          "Eccc"
+        ],
+        "summary": "(CIDT_ECCC_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/EnglishLearningProgressProficiency/district": {
+      "get": {
+        "tags": [
+          "EnglishLearningProgressProficiency"
+        ],
+        "summary": "(ELPTP_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/EnglishLearningProgressProficiency/networks": {
+      "get": {
+        "tags": [
+          "EnglishLearningProgressProficiency"
+        ],
+        "summary": "(ELPTP_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/EnglishLearningProgressProficiency/schools": {
+      "get": {
+        "tags": [
+          "EnglishLearningProgressProficiency"
+        ],
+        "summary": "(ELPTP_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ExcelerateSchoolPublic/schools": {
+      "get": {
+        "tags": [
+          "ExcelerateSchoolPublic"
+        ],
+        "summary": "(EXCELERATE_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FY2025BudgetOverview/schools": {
+      "get": {
+        "tags": [
+          "FY2025BudgetOverview"
+        ],
+        "summary": "(FY2025_BudgetOverview)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/G38OTRates/district": {
+      "get": {
+        "tags": [
+          "G38OTRates"
+        ],
+        "summary": "(CIDT_G38OT_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/G38OTRates/networks": {
+      "get": {
+        "tags": [
+          "G38OTRates"
+        ],
+        "summary": "(CIDT_G38OT_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/G38OTRates/schools": {
+      "get": {
+        "tags": [
+          "G38OTRates"
+        ],
+        "summary": "(CIDT_G38OT_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Graduation/district": {
+      "get": {
+        "tags": [
+          "Graduation"
+        ],
+        "summary": "(GRADUATION_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Graduation/networks": {
+      "get": {
+        "tags": [
+          "Graduation"
+        ],
+        "summary": "(GRADUATION_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Graduation/schools": {
+      "get": {
+        "tags": [
+          "Graduation"
+        ],
+        "summary": "(GRADUATION_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/HighQualityCurriculum/schools": {
+      "get": {
+        "tags": [
+          "HighQualityCurriculum"
+        ],
+        "summary": "(HQC_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsAttendanceGrowthRate/schools": {
+      "get": {
+        "tags": [
+          "OptionsAttendanceGrowthRate"
+        ],
+        "summary": "(CIDT_Options_Attendance_Growth_Rate_School)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsAttendanceGrowthRate/networks": {
+      "get": {
+        "tags": [
+          "OptionsAttendanceGrowthRate"
+        ],
+        "summary": "(CIDT_Options_Attendance_Growth_Rate_Network)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsAverageDailyAttendance/schools": {
+      "get": {
+        "tags": [
+          "OptionsAverageDailyAttendance"
+        ],
+        "summary": "(CIDT_Options_Average_Daily_Attendance_School)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsAverageDailyAttendance/networks": {
+      "get": {
+        "tags": [
+          "OptionsAverageDailyAttendance"
+        ],
+        "summary": "(CIDT_Options_Average_Daily_Attendance_Network)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsCreditAttainmentRate/schools": {
+      "get": {
+        "tags": [
+          "OptionsCreditAttainmentRate"
+        ],
+        "summary": "(CIDT_Options_Credit_Attainment_Rate_School)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsCreditAttainmentRate/networks": {
+      "get": {
+        "tags": [
+          "OptionsCreditAttainmentRate"
+        ],
+        "summary": "(CIDT_Options_Credit_Attainment_Rate_Network)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsOneYearGraduationRate/schools": {
+      "get": {
+        "tags": [
+          "OptionsOneYearGraduationRate"
+        ],
+        "summary": "(CIDT_Options_One_Year_Graduation_Rate_School)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsOneYearGraduationRate/networks": {
+      "get": {
+        "tags": [
+          "OptionsOneYearGraduationRate"
+        ],
+        "summary": "(CIDT_Options_One_Year_Graduation_Rate_Network)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsStabilizationRate/schools": {
+      "get": {
+        "tags": [
+          "OptionsStabilizationRate"
+        ],
+        "summary": "(CIDT_Options_Options_Stabilization_Rate_School)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsStabilizationRate/networks": {
+      "get": {
+        "tags": [
+          "OptionsStabilizationRate"
+        ],
+        "summary": "(CIDT_Options_Options_Stabilization_Rate_Network)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsStarMathGrowth/schools": {
+      "get": {
+        "tags": [
+          "OptionsStarMathGrowth"
+        ],
+        "summary": "(CIDT_Options_STAR_Math_growth_School)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OptionsStarMathGrowth/networks": {
+      "get": {
+        "tags": [
+          "OptionsStarMathGrowth"
+        ],
+        "summary": "(CIDT_Options_STAR_Math_growth_Network)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OutofSchooltimeFunding/schools": {
+      "get": {
+        "tags": [
+          "OutofSchooltimeFunding"
+        ],
+        "summary": "(OST_FUNDING_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OutofschooltimePR/district": {
+      "get": {
+        "tags": [
+          "OutofschooltimePR"
+        ],
+        "summary": "(OST_EOY_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OutofschooltimePR/networks": {
+      "get": {
+        "tags": [
+          "OutofschooltimePR"
+        ],
+        "summary": "(OST_EOY_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OutofschooltimePR/schools": {
+      "get": {
+        "tags": [
+          "OutofschooltimePR"
+        ],
+        "summary": "(OST_EOY_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/OutofSchooltimePrograms/schools": {
+      "get": {
+        "tags": [
+          "OutofSchooltimePrograms"
+        ],
+        "summary": "(OST_PROGRAMS_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PostSecondaryPathwaysTransitionEnrollment/district": {
+      "get": {
+        "tags": [
+          "PostSecondaryPathwaysTransitionEnrollment"
+        ],
+        "summary": "(CIDT_PSPTE_District)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PostSecondaryPathwaysTransitionEnrollment/networks": {
+      "get": {
+        "tags": [
+          "PostSecondaryPathwaysTransitionEnrollment"
+        ],
+        "summary": "(CIDT_PSPTE_Network)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PostSecondaryPathwaysTransitionEnrollment/schools": {
+      "get": {
+        "tags": [
+          "PostSecondaryPathwaysTransitionEnrollment"
+        ],
+        "summary": "(CIDT_PSPTE_School)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/SchoolOpportunityIndex/schools": {
+      "get": {
+        "tags": [
+          "SchoolOpportunityIndex"
+        ],
+        "summary": "(School_Opportunity_Index)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentGrowth/district": {
+      "get": {
+        "tags": [
+          "StudentGrowth"
+        ],
+        "summary": "(STUDENT_GROWTH_DISTRICT_PUBLIC)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentGrowth/networks": {
+      "get": {
+        "tags": [
+          "StudentGrowth"
+        ],
+        "summary": "(STUDENT_GROWTH_NETWORK_PUBLIC)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentGrowth/schools": {
+      "get": {
+        "tags": [
+          "StudentGrowth"
+        ],
+        "summary": "(STUDENT_GROWTH_SCHOOL_PUBLIC)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentProficiencyIAR/district": {
+      "get": {
+        "tags": [
+          "StudentProficiencyIAR"
+        ],
+        "summary": "(IARALL_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentProficiencyIAR/networks": {
+      "get": {
+        "tags": [
+          "StudentProficiencyIAR"
+        ],
+        "summary": "(IARALL_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentProficiencyIAR/schools": {
+      "get": {
+        "tags": [
+          "StudentProficiencyIAR"
+        ],
+        "summary": "(IARALL_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentProficiencyPSAT/district": {
+      "get": {
+        "tags": [
+          "StudentProficiencyPSAT"
+        ],
+        "summary": "(SATPSATALL_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentProficiencyPSAT/networks": {
+      "get": {
+        "tags": [
+          "StudentProficiencyPSAT"
+        ],
+        "summary": "(SATPSATALL_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/StudentProficiencyPSAT/schools": {
+      "get": {
+        "tags": [
+          "StudentProficiencyPSAT"
+        ],
+        "summary": "(SATPSATALL_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/TeacherPositions/schools": {
+      "get": {
+        "tags": [
+          "TeacherPositions"
+        ],
+        "summary": "(TeacherPositions)",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApsoSchoolPracticesSchoolPublic": {
+        "type": "object",
+        "properties": {
+          "metricTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "aggregationLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolYear": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolCode": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ampTier": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentlyRamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "alumniWinter": {
+            "type": "string",
+            "nullable": true
+          },
+          "alumniSummer": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateUpdated": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BlueribonSchoolPublic": {
+        "type": "object",
+        "properties": {
+          "metricTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "aggregationLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolYear": {
+            "type": "string",
+            "nullable": true
+          },
+          "network": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolName": {
+            "type": "string",
+            "nullable": true
+          },
+          "blueRibbonNationalMostRecentYear": {
+            "type": "string",
+            "nullable": true
+          },
+          "blueRibbonStateMostRecentYear": {
+            "type": "string",
+            "nullable": true
+          },
+          "schema": {
+            "type": "string",
+            "nullable": true
+          },
+          "etlProcess": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateUpdated": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
