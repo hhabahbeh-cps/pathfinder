@@ -268,6 +268,15 @@ def get_school_behavior_metrics(school_code: Optional[Union[int, str]] = None) -
 # MCP ROUTER / JSON-RPC HANDLER
 # ==========================================
 
+@app.get("/")
+@app.get("/mcp")
+async def health_check():
+    return {
+        "status": "online",
+        "server": "CPS Selective Enrollment & Academic Centers MCP",
+        "message": "Send POST requests with JSON-RPC payload to /mcp to execute tools."
+    }
+
 @app.post("/mcp")
 async def handle_mcp(request: Request):
     body = await request.json()
@@ -427,5 +436,7 @@ async def handle_mcp(request: Request):
 
 if __name__ == "__main__":
     import uvicorn
+    # Render sets $PORT dynamically; fallback to 10000 only for local dev
     port = int(os.environ.get("PORT", 10000))
     uvicorn.run(app, host="0.0.0.0", port=port)
+
