@@ -11,5 +11,23 @@
         "RENDER_API_KEY": "rnd_RQKI2qDcdmhbHTy1LhthRUQf0V1c"
       }
     }
-  } 
-}
+  },
+    "mcpServers": {
+      "cps-pathfinder-local": {
+        "command": "python",
+        "args": [
+          "C:\\Users\\hhabahbeh\\source\\repos\\hhabahbeh-cps\\pathfinder\\main.py"
+        ],
+        "env": {
+          "PORT": "10000"
+        }
+      },
+      "render-infrastructure": {
+        "command": "C:\\Users\\hhabahbeh\\source\\repos\\hhabahbeh-cps\\pathfinder\\render-mcp-server_v0.3.0.exe",
+        "args": [],
+        "env": {
+          "RENDER_API_KEY": "rnd_RQKI2qDcdmhbHTy1LhthRUQf0V1c"
+        }
+      }
+    }
+  }
