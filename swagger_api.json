@@ -1,427 +1,261 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "School data progress API",
-    "description": "Api for School data progress.",
+    "title": "School Data Progress API",
+    "description": "API providing metrics on CPS school performance, attendance, test scores, graduation rates, and college persistence for AI and MCP integration.",
     "version": "v1.0.1"
   },
   "servers": [
     {
-      "url": "https://api.cps.edu/schooldataprogress"
+      "url": "https://dev.api.cps.edu/schooldataprogress"
     }
   ],
   "paths": {
     "/ActStatePerformance/district": {
       "get": {
-        "tags": [
-          "ActStatePerformance"
-        ],
-        "summary": "(ACTPREACT_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ActStatePerformance" ],
+        "summary": "Get district-level ACT/PreACT performance data",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ActStatePerformance/networks": {
       "get": {
-        "tags": [
-          "ActStatePerformance"
-        ],
-        "summary": "(ACTPREACT_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ActStatePerformance" ],
+        "summary": "Get network-level ACT/PreACT performance data",
         "parameters": [
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
+            "description": "Filter by CPS network name (e.g., 'Network 1'). Omit to retrieve all networks.",
+            "required": false,
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ActStatePerformance/schools": {
       "get": {
-        "tags": [
-          "ActStatePerformance"
-        ],
-        "summary": "(ACTPREACT_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ActStatePerformance" ],
+        "summary": "Get school-level ACT/PreACT performance data",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "description": "Numeric CPS School ID (e.g., 609749). Omit to return all schools.",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ApsoAdvCourses/schools": {
       "get": {
-        "tags": [
-          "ApsoAdvCourses"
-        ],
-        "summary": "(CIDT_VW_APSO_ACCESS_TO_ADVCOURSES_SCHOOL_PUBLIC)",
+        "tags": [ "ApsoAdvCourses" ],
+        "summary": "Get school access rates to advanced courses (AP/IB/Honors)",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ApsoApplyCollegeRates/district": {
       "get": {
-        "tags": [
-          "ApsoApplyCollegeRates"
-        ],
-        "summary": "(APSO_APPLY_COLLEGE_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ApsoApplyCollegeRates" ],
+        "summary": "Get district college application rates",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ApsoApplyCollegeRates/schools": {
       "get": {
-        "tags": [
-          "ApsoApplyCollegeRates"
-        ],
-        "summary": "(APSO_APPLY_COLLEGE_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ApsoApplyCollegeRates" ],
+        "summary": "Get school college application rates",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ApsoFinaid/district": {
       "get": {
-        "tags": [
-          "ApsoFinaid"
-        ],
-        "summary": "(CIDT_APSO_FINAID_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ApsoFinaid" ],
+        "summary": "Get district financial aid completion rates",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ApsoFinaid/schools": {
       "get": {
-        "tags": [
-          "ApsoFinaid"
-        ],
-        "summary": "(CIDT_APSO_FINAID_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ApsoFinaid" ],
+        "summary": "Get school financial aid completion rates",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/ApsoFinaid/networks": {
       "get": {
-        "tags": [
-          "ApsoFinaid"
-        ],
-        "summary": "(CIDT_APSO_FINAID_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "ApsoFinaid" ],
+        "summary": "Get network financial aid completion rates",
         "parameters": [
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "required": false,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoFinaidAppliedRates/district": {
-      "get": {
-        "tags": [
-          "ApsoFinaidAppliedRates"
-        ],
-        "summary": "(CIDT_APSO_FINAID_APPLIED_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoFinaidAppliedRates/schools": {
-      "get": {
-        "tags": [
-          "ApsoFinaidAppliedRates"
-        ],
-        "summary": "(CIDT_APSO_FINAID_APPLIED_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoIlpRates/district": {
-      "get": {
-        "tags": [
-          "ApsoIlpRates"
-        ],
-        "summary": "(CIDT_APSO_ILP_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoIlpRates/schools": {
-      "get": {
-        "tags": [
-          "ApsoIlpRates"
-        ],
-        "summary": "(CIDT_APSO_ILP_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoIlpRates/networks": {
-      "get": {
-        "tags": [
-          "ApsoIlpRates"
-        ],
-        "summary": "(CIDT_APSO_ILP_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoKpi/district": {
-      "get": {
-        "tags": [
-          "ApsoKpi"
-        ],
-        "summary": "(APSO_KPI_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoKpi/schools": {
-      "get": {
-        "tags": [
-          "ApsoKpi"
-        ],
-        "summary": "(APSO_KPI_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoKpi/networks": {
-      "get": {
-        "tags": [
-          "ApsoKpi"
-        ],
-        "summary": "(CIDT_APSO_KPI_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoLpsRates/district": {
-      "get": {
-        "tags": [
-          "ApsoLpsRates"
-        ],
-        "summary": "(CIDT_APSO_LPS_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoLpsRates/schools": {
-      "get": {
-        "tags": [
-          "ApsoLpsRates"
-        ],
-        "summary": "(CIDT_APSO_LPS_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ApsoLpsRates/networks": {
-      "get": {
-        "tags": [
-          "ApsoLpsRates"
-        ],
-        "summary": "(CIDT_APSO_LPS_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/ApsoSchoolPractices": {
       "get": {
-        "tags": [
-          "ApsoSchoolPractices"
-        ],
+        "tags": [ "ApsoSchoolPractices" ],
+        "summary": "Get all school practice metrics",
         "responses": {
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
-                  }
+                  "items": { "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic" }
                 }
               }
             }
@@ -431,17 +265,16 @@
     },
     "/ApsoSchoolPractices/SchoolCode/{schoolCode}": {
       "get": {
-        "tags": [
-          "ApsoSchoolPractices"
-        ],
+        "tags": [ "ApsoSchoolPractices" ],
+        "summary": "Get school practice metrics by school code",
         "parameters": [
           {
             "name": "schoolCode",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "number",
-              "format": "double"
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
@@ -449,28 +282,10 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic"
-                  }
+                  "items": { "$ref": "#/components/schemas/ApsoSchoolPracticesSchoolPublic" }
                 }
               }
             }
@@ -478,74 +293,55 @@
         }
       }
     },
-    "/BalancedAssessments/schools": {
-      "get": {
-        "tags": [
-          "BalancedAssessments"
-        ],
-        "summary": "(BALANCEDASSESSMENT_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/BehaviorSchoolLevel/schools": {
       "get": {
-        "tags": [
-          "BehaviorSchoolLevel"
-        ],
-        "summary": "Get behavior data at school level (cps_behavior_school_level)",
+        "tags": [ "BehaviorSchoolLevel" ],
+        "summary": "Get school-level behavior metrics",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           },
           {
             "name": "schoolyear",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
-              "default": ""
+              "example": "2023-2024"
             }
           },
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
+            "required": false,
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/BehaviorSchoolLevel/schools/{schoolcode}": {
       "get": {
-        "tags": [
-          "BehaviorSchoolLevel"
-        ],
-        "summary": "Get behavior data for a specific school by school ID",
+        "tags": [ "BehaviorSchoolLevel" ],
+        "summary": "Get school behavior data by path parameter",
         "parameters": [
           {
             "name": "schoolcode",
@@ -553,39 +349,16 @@
             "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "example": 609749
             }
           },
           {
             "name": "schoolyear",
             "in": "query",
+            "required": false,
             "schema": {
               "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/BlueribonSchoolPublic/schools": {
-      "get": {
-        "tags": [
-          "BlueribonSchoolPublic"
-        ],
-        "summary": "Get Blue Ribbon School data by school code",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "description": "The school code to filter by",
-            "schema": {
-              "type": "string",
-              "default": ""
+              "example": "2023-2024"
             }
           }
         ],
@@ -593,28 +366,40 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BlueribonSchoolPublic"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BlueribonSchoolPublic"
-                  }
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
                 }
-              },
-              "text/json": {
+              }
+            }
+          }
+        }
+      }
+    },
+    "/BlueribonSchoolPublic/schools": {
+      "get": {
+        "tags": [ "BlueribonSchoolPublic" ],
+        "summary": "Get Blue Ribbon school recognition data",
+        "parameters": [
+          {
+            "name": "schoolcode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 609749
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BlueribonSchoolPublic"
-                  }
+                  "items": { "$ref": "#/components/schemas/BlueribonSchoolPublic" }
                 }
               }
             }
@@ -624,1424 +409,616 @@
     },
     "/CapitalInvestments/schools": {
       "get": {
-        "tags": [
-          "CapitalInvestments"
-        ],
-        "summary": "(CapitalInvestments)",
+        "tags": [ "CapitalInvestments" ],
+        "summary": "Get Capital Investments data for schools",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Chronicabsence/district": {
       "get": {
-        "tags": [
-          "Chronicabsence"
-        ],
-        "summary": "(CHRONABS_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Chronicabsence" ],
+        "summary": "Get district chronic absence rates",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Chronicabsence/networks": {
       "get": {
-        "tags": [
-          "Chronicabsence"
-        ],
-        "summary": "(CHRONABS_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Chronicabsence" ],
+        "summary": "Get network chronic absence rates",
         "parameters": [
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
+            "required": false,
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Chronicabsence/schools": {
       "get": {
-        "tags": [
-          "Chronicabsence"
-        ],
-        "summary": "(CHRONABS_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Chronicabsence" ],
+        "summary": "Get school chronic absence rates",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Cidt5e/schools": {
-      "get": {
-        "tags": [
-          "Cidt5e"
-        ],
-        "summary": "(CIDT_5E_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/CIDT9OT/district": {
-      "get": {
-        "tags": [
-          "CIDT9OT"
-        ],
-        "summary": "(CIDT_9OT_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/CIDT9OT/networks": {
-      "get": {
-        "tags": [
-          "CIDT9OT"
-        ],
-        "summary": "(CIDT_9OT_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/CIDT9OT/schools": {
-      "get": {
-        "tags": [
-          "CIDT9OT"
-        ],
-        "summary": "(CIDT_9OT_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/CidtCreativeBadge/schools": {
-      "get": {
-        "tags": [
-          "CidtCreativeBadge"
-        ],
-        "summary": "(CIDT_CREATIVE_BADGE_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/CidtCultivateImpact/schools": {
-      "get": {
-        "tags": [
-          "CidtCultivateImpact"
-        ],
-        "summary": "(CIDT_CULTIVATE_IMPACT_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/CidtCultivateResponseRate/schools": {
-      "get": {
-        "tags": [
-          "CidtCultivateResponseRate"
-        ],
-        "summary": "(CIDT_CULTIVATE_RESPONSE_RATE_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/Collegeenrollment/district": {
       "get": {
-        "tags": [
-          "Collegeenrollment"
-        ],
-        "summary": "(COLLENR_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Collegeenrollment" ],
+        "summary": "Get district college enrollment rates",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Collegeenrollment/networks": {
       "get": {
-        "tags": [
-          "Collegeenrollment"
-        ],
-        "summary": "(COLLENR_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Collegeenrollment" ],
+        "summary": "Get network college enrollment rates",
         "parameters": [
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
+            "required": false,
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Collegeenrollment/schools": {
       "get": {
-        "tags": [
-          "Collegeenrollment"
-        ],
-        "summary": "(COLLENR_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Collegeenrollment" ],
+        "summary": "Get college enrollment rates for high schools",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Collegepersistence/district": {
       "get": {
-        "tags": [
-          "Collegepersistence"
-        ],
-        "summary": "(COLLPER_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Collegepersistence" ],
+        "summary": "Get district college persistence rates",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Collegepersistence/networks": {
       "get": {
-        "tags": [
-          "Collegepersistence"
-        ],
-        "summary": "(COLLPER_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Collegepersistence" ],
+        "summary": "Get network college persistence rates",
         "parameters": [
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
+            "required": false,
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Collegepersistence/schools": {
       "get": {
-        "tags": [
-          "Collegepersistence"
-        ],
-        "summary": "(COLLPER_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Collegepersistence" ],
+        "summary": "Get college persistence rates for high schools",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/DetentionEnrollment/schools": {
-      "get": {
-        "tags": [
-          "DetentionEnrollment"
-        ],
-        "summary": "(CIDT_Transition_Rate_Enrollment)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Detentionpersistence/schools": {
-      "get": {
-        "tags": [
-          "Detentionpersistence"
-        ],
-        "summary": "(CIDT_Transition_Rate_Persistence)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/Dropout/district": {
       "get": {
-        "tags": [
-          "Dropout"
-        ],
-        "summary": "(DROPOUT_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Dropout" ],
+        "summary": "Get district dropout rates",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Dropout/networks": {
       "get": {
-        "tags": [
-          "Dropout"
-        ],
-        "summary": "(DROPOUT_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Dropout" ],
+        "summary": "Get network dropout rates",
         "parameters": [
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
+            "required": false,
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Dropout/schools": {
       "get": {
-        "tags": [
-          "Dropout"
-        ],
-        "summary": "(DROPOUT_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Dropout" ],
+        "summary": "Get school dropout rates",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Eccc/district": {
-      "get": {
-        "tags": [
-          "Eccc"
-        ],
-        "summary": "(CIDT_ECCC_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Eccc/networks": {
-      "get": {
-        "tags": [
-          "Eccc"
-        ],
-        "summary": "(CIDT_ECCC_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/Eccc/schools": {
-      "get": {
-        "tags": [
-          "Eccc"
-        ],
-        "summary": "(CIDT_ECCC_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/EnglishLearningProgressProficiency/district": {
-      "get": {
-        "tags": [
-          "EnglishLearningProgressProficiency"
-        ],
-        "summary": "(ELPTP_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/EnglishLearningProgressProficiency/networks": {
-      "get": {
-        "tags": [
-          "EnglishLearningProgressProficiency"
-        ],
-        "summary": "(ELPTP_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/EnglishLearningProgressProficiency/schools": {
-      "get": {
-        "tags": [
-          "EnglishLearningProgressProficiency"
-        ],
-        "summary": "(ELPTP_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ExcelerateSchoolPublic/schools": {
-      "get": {
-        "tags": [
-          "ExcelerateSchoolPublic"
-        ],
-        "summary": "(EXCELERATE_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/FY2025BudgetOverview/schools": {
       "get": {
-        "tags": [
-          "FY2025BudgetOverview"
-        ],
-        "summary": "(FY2025_BudgetOverview)",
+        "tags": [ "FY2025BudgetOverview" ],
+        "summary": "Get FY2025 Budget Overview for schools",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/G38OTRates/district": {
-      "get": {
-        "tags": [
-          "G38OTRates"
-        ],
-        "summary": "(CIDT_G38OT_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/G38OTRates/networks": {
-      "get": {
-        "tags": [
-          "G38OTRates"
-        ],
-        "summary": "(CIDT_G38OT_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/G38OTRates/schools": {
-      "get": {
-        "tags": [
-          "G38OTRates"
-        ],
-        "summary": "(CIDT_G38OT_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/Graduation/district": {
       "get": {
-        "tags": [
-          "Graduation"
-        ],
-        "summary": "(GRADUATION_RATES_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Graduation" ],
+        "summary": "Get district graduation rates",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Graduation/networks": {
       "get": {
-        "tags": [
-          "Graduation"
-        ],
-        "summary": "(GRADUATION_RATES_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Graduation" ],
+        "summary": "Get network graduation rates",
         "parameters": [
           {
             "name": "network",
             "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
+            "required": false,
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/Graduation/schools": {
       "get": {
-        "tags": [
-          "Graduation"
-        ],
-        "summary": "(GRADUATION_RATES_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "Graduation" ],
+        "summary": "Get high school graduation rates",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/HighQualityCurriculum/schools": {
-      "get": {
-        "tags": [
-          "HighQualityCurriculum"
-        ],
-        "summary": "(HQC_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsAttendanceGrowthRate/schools": {
-      "get": {
-        "tags": [
-          "OptionsAttendanceGrowthRate"
-        ],
-        "summary": "(CIDT_Options_Attendance_Growth_Rate_School)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsAttendanceGrowthRate/networks": {
-      "get": {
-        "tags": [
-          "OptionsAttendanceGrowthRate"
-        ],
-        "summary": "(CIDT_Options_Attendance_Growth_Rate_Network)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsAverageDailyAttendance/schools": {
-      "get": {
-        "tags": [
-          "OptionsAverageDailyAttendance"
-        ],
-        "summary": "(CIDT_Options_Average_Daily_Attendance_School)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsAverageDailyAttendance/networks": {
-      "get": {
-        "tags": [
-          "OptionsAverageDailyAttendance"
-        ],
-        "summary": "(CIDT_Options_Average_Daily_Attendance_Network)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsCreditAttainmentRate/schools": {
-      "get": {
-        "tags": [
-          "OptionsCreditAttainmentRate"
-        ],
-        "summary": "(CIDT_Options_Credit_Attainment_Rate_School)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsCreditAttainmentRate/networks": {
-      "get": {
-        "tags": [
-          "OptionsCreditAttainmentRate"
-        ],
-        "summary": "(CIDT_Options_Credit_Attainment_Rate_Network)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsOneYearGraduationRate/schools": {
-      "get": {
-        "tags": [
-          "OptionsOneYearGraduationRate"
-        ],
-        "summary": "(CIDT_Options_One_Year_Graduation_Rate_School)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsOneYearGraduationRate/networks": {
-      "get": {
-        "tags": [
-          "OptionsOneYearGraduationRate"
-        ],
-        "summary": "(CIDT_Options_One_Year_Graduation_Rate_Network)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsStabilizationRate/schools": {
-      "get": {
-        "tags": [
-          "OptionsStabilizationRate"
-        ],
-        "summary": "(CIDT_Options_Options_Stabilization_Rate_School)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsStabilizationRate/networks": {
-      "get": {
-        "tags": [
-          "OptionsStabilizationRate"
-        ],
-        "summary": "(CIDT_Options_Options_Stabilization_Rate_Network)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsStarMathGrowth/schools": {
-      "get": {
-        "tags": [
-          "OptionsStarMathGrowth"
-        ],
-        "summary": "(CIDT_Options_STAR_Math_growth_School)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OptionsStarMathGrowth/networks": {
-      "get": {
-        "tags": [
-          "OptionsStarMathGrowth"
-        ],
-        "summary": "(CIDT_Options_STAR_Math_growth_Network)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OutofSchooltimeFunding/schools": {
-      "get": {
-        "tags": [
-          "OutofSchooltimeFunding"
-        ],
-        "summary": "(OST_FUNDING_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OutofschooltimePR/district": {
-      "get": {
-        "tags": [
-          "OutofschooltimePR"
-        ],
-        "summary": "(OST_EOY_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OutofschooltimePR/networks": {
-      "get": {
-        "tags": [
-          "OutofschooltimePR"
-        ],
-        "summary": "(OST_EOY_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OutofschooltimePR/schools": {
-      "get": {
-        "tags": [
-          "OutofschooltimePR"
-        ],
-        "summary": "(OST_EOY_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/OutofSchooltimePrograms/schools": {
-      "get": {
-        "tags": [
-          "OutofSchooltimePrograms"
-        ],
-        "summary": "(OST_PROGRAMS_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/PostSecondaryPathwaysTransitionEnrollment/district": {
-      "get": {
-        "tags": [
-          "PostSecondaryPathwaysTransitionEnrollment"
-        ],
-        "summary": "(CIDT_PSPTE_District)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/PostSecondaryPathwaysTransitionEnrollment/networks": {
-      "get": {
-        "tags": [
-          "PostSecondaryPathwaysTransitionEnrollment"
-        ],
-        "summary": "(CIDT_PSPTE_Network)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/PostSecondaryPathwaysTransitionEnrollment/schools": {
-      "get": {
-        "tags": [
-          "PostSecondaryPathwaysTransitionEnrollment"
-        ],
-        "summary": "(CIDT_PSPTE_School)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/SchoolOpportunityIndex/schools": {
       "get": {
-        "tags": [
-          "SchoolOpportunityIndex"
-        ],
-        "summary": "(School_Opportunity_Index)",
+        "tags": [ "SchoolOpportunityIndex" ],
+        "summary": "Get school opportunity index data and quintiles",
+        "description": "Returns Opportunity Index metrics, hardship index, and scores. Omit schoolcode to retrieve the full list of CPS schools with schoolName and schoolCode.",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "description": "Numeric CPS School ID (e.g., 609749 for Northside Prep, 400009 for Global Citizenship). Omit to fetch all schools.",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/StudentGrowth/district": {
-      "get": {
-        "tags": [
-          "StudentGrowth"
-        ],
-        "summary": "(STUDENT_GROWTH_DISTRICT_PUBLIC)",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/StudentGrowth/networks": {
-      "get": {
-        "tags": [
-          "StudentGrowth"
-        ],
-        "summary": "(STUDENT_GROWTH_NETWORK_PUBLIC)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "schoolCode": {
+                        "type": "integer",
+                        "example": 400009
+                      },
+                      "schoolName": {
+                        "type": "string",
+                        "example": "GLOBAL CITIZENSHIP"
+                      },
+                      "indicatorSum": { "type": "integer" },
+                      "averageScore": { "type": "number" },
+                      "communityArea": { "type": "string" }
+                    },
+                    "additionalProperties": true
+                  }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/StudentGrowth/schools": {
-      "get": {
-        "tags": [
-          "StudentGrowth"
-        ],
-        "summary": "(STUDENT_GROWTH_SCHOOL_PUBLIC)",
-        "parameters": [
-          {
-            "name": "schoolcode",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/StudentProficiencyIAR/district": {
       "get": {
-        "tags": [
-          "StudentProficiencyIAR"
-        ],
-        "summary": "(IARALL_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "StudentProficiencyIAR" ],
+        "summary": "Get district IAR elementary test proficiency data",
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/StudentProficiencyIAR/networks": {
-      "get": {
-        "tags": [
-          "StudentProficiencyIAR"
-        ],
-        "summary": "(IARALL_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/StudentProficiencyIAR/schools": {
       "get": {
-        "tags": [
-          "StudentProficiencyIAR"
-        ],
-        "summary": "(IARALL_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "StudentProficiencyIAR" ],
+        "summary": "Get IAR elementary test proficiency data for a school",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/StudentProficiencyPSAT/district": {
       "get": {
-        "tags": [
-          "StudentProficiencyPSAT"
-        ],
-        "summary": "(SATPSATALL_DISTRICT_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "StudentProficiencyPSAT" ],
+        "summary": "Get district PSAT/SAT high school proficiency data",
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/StudentProficiencyPSAT/networks": {
-      "get": {
-        "tags": [
-          "StudentProficiencyPSAT"
-        ],
-        "summary": "(SATPSATALL_NETWORK_PUBLIC_INCLUDINGEMPTYROWS)",
-        "parameters": [
-          {
-            "name": "network",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "default": ""
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/StudentProficiencyPSAT/schools": {
       "get": {
-        "tags": [
-          "StudentProficiencyPSAT"
-        ],
-        "summary": "(SATPSATALL_SCHOOL_PUBLIC_INCLUDINGEMPTYROWS)",
+        "tags": [ "StudentProficiencyPSAT" ],
+        "summary": "Get PSAT/SAT high school proficiency data for a school",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
     },
     "/TeacherPositions/schools": {
       "get": {
-        "tags": [
-          "TeacherPositions"
-        ],
-        "summary": "(TeacherPositions)",
+        "tags": [ "TeacherPositions" ],
+        "summary": "Get Teacher Positions data for a school",
         "parameters": [
           {
             "name": "schoolcode",
             "in": "query",
+            "required": false,
             "schema": {
-              "type": "string",
-              "default": ""
+              "type": "integer",
+              "example": 609749
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GenericRecord" }
+                }
+              }
+            }
           }
         }
       }
@@ -2049,6 +1026,11 @@
   },
   "components": {
     "schemas": {
+      "GenericRecord": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Dynamic key-value pairs returned by CPS dataset API views."
+      },
       "ApsoSchoolPracticesSchoolPublic": {
         "type": "object",
         "properties": {
@@ -2065,8 +1047,7 @@
             "nullable": true
           },
           "schoolCode": {
-            "type": "number",
-            "format": "double",
+            "type": "integer",
             "nullable": true
           },
           "ampTier": {
@@ -2090,7 +1071,7 @@
             "format": "date-time"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       },
       "BlueribonSchoolPublic": {
         "type": "object",
@@ -2112,7 +1093,7 @@
             "nullable": true
           },
           "schoolCode": {
-            "type": "string",
+            "type": "integer",
             "nullable": true
           },
           "schoolName": {
@@ -2144,7 +1125,7 @@
             "format": "date-time"
           }
         },
-        "additionalProperties": false
+        "additionalProperties": true
       }
     }
   }
